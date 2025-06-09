@@ -41,15 +41,15 @@ class SequenceCommander(Node):
         gripper_open = ('gripper', 1.8)
         gripper_close = ('gripper', 0.2)
         
-        ingredient_clearance = ('move', 0.0, 0.28, 0.33, 1.570, -0.05, 0.0)
+        ingredient_clearance = ('move', -0.005, 0.28, 0.33, 1.570, -0.05, 0.0)
         grill_clearance = ('move', -0.2, 0.0, 0.33, 1.570, -0.05, 0.0)
-        delivery_clearance = ('move', 0.0, -0.28, 0.33, 1.570, -0.05, 0.0)
+        delivery_clearance = ('move', -0.005, -0.27, 0.33, 1.570, -0.05, 0.0)
         
         ingredient_0 = ('move', 0.0, 0.28, 0.3, 1.570, -0.05, 0.0)
         
         grill_0 = ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0)
         grill_0_flip = ('move', -0.41, 0.0, 0.07, -1.570, -0.05, 0.0)
-        grill_0_clear_flip = ('move', -0.35, 0.0, -0.02, -1.570, -0.05, 0.0),
+        grill_0_clear_flip = ('move', -0.38, 0.0, -0.02, -1.570, -0.05, 0.0),
         
         delivery_0 = ('move', 0.0, -0.28, 0.3, 1.570, -0.05, 0.0)
         
