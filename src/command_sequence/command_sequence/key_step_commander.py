@@ -25,8 +25,14 @@ class SequenceCommander(Node):
         # Create service client for move joint commands
         self.move_client = self.create_client(MoveJointCmd, '/move_joint_cmd')
         
-        # Create publisher for gripper commands
+        # Create publisher and subscriber for gripper commands
         self.gripper_pub = self.create_publisher(Float32, '/gripper_cmd', 10)
+        self.gripper_sub = self.create_subscription(
+            Float32,
+            '/gripper_state',  # Assuming this is the feedback topic
+            self.gripper_callback,
+            10
+        )
         
         # Wait for service to be available
         while not self.move_client.wait_for_service(timeout_sec=1.0):
@@ -77,6 +83,10 @@ class SequenceCommander(Node):
             elif key == '\x03':  # ctrl+c
                 self.running = False
                 break
+
+    def gripper_callback(self, msg):
+        """Callback for gripper state feedback"""
+        self.get_logger().info(f'Gripper state feedback: position={msg.data}')
                 
     def send_move_command(self, x, y, z, roll, pitch, yaw):
         request = MoveJointCmd.Request()
@@ -89,6 +99,13 @@ class SequenceCommander(Node):
         
         self.get_logger().info(f'Sending move command: x={x}, y={y}, z={z}, roll={roll}, pitch={pitch}, yaw={yaw}')
         future = self.move_client.call_async(request)
+        
+        # Add callback for when the future completes
+        future.add_done_callback(
+            lambda f: self.get_logger().info(
+                f'Move command completed with result: {f.result() if not f.exception() else f"Error: {f.exception()}"}'
+            )
+        )
         return future
         
     def send_gripper_command(self, position):
