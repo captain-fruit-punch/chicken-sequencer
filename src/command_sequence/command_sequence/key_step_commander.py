@@ -49,8 +49,8 @@ class SequenceCommander(Node):
         
         grill_0 = ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0)
         grill_0_clearance = ('move', -0.41, 0.0, 0.09, 1.570, -0.05, 0.0)
-        grill_0_flip = ('move', -0.41, 0.0, 0.09, -1.570, 0.05, 0.0)
-        grill_0_clear_flip = ('move', -0.35, 0.1, -0.02, -1.570, 0.05, 0.0)
+        grill_0_flip = ('move', -0.41, 0.0, 0.09, -1.570, -0.1, 0.0)
+        grill_0_clear_flip = ('move', -0.35, 0.1, -0.02, -1.570, -0.1, 0.0)
         
         delivery_0 = ('move', 0.0, -0.27, 0.3, 1.570, -0.05, 0.0)
         
