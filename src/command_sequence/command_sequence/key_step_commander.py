@@ -35,10 +35,10 @@ class SequenceCommander(Node):
         # Define sequence of commands
         self.sequence = [
             # Format: ('move', x, y, z, roll, pitch, yaw) or ('gripper', position)
-            ('move', 0.3, 0.0, 0.1, 0.2, 0.2, 0.0),
-            ('gripper', 0.5),
-            ('move', 0.2, 0.1, 0.15, 0.0, 0.3, 0.1),
-            ('gripper', 0.0),
+            ('gripper', 1.8),
+            ('move', 0.0, 0.28, 0.33, 1.570, -0.05, 0.0),
+            ('move', 0.0, 0.28, 0.29, 1.570, -0.05, 0.0),
+            ('gripper', 0.2),
         ]
         
         self.current_index = 0
