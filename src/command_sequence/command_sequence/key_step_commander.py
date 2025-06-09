@@ -43,13 +43,14 @@ class SequenceCommander(Node):
         
         ingredient_clearance = ('move', -0.005, 0.28, 0.33, 1.570, -0.05, 0.0)
         grill_clearance = ('move', -0.2, 0.0, 0.33, 1.570, -0.05, 0.0)
-        delivery_clearance = ('move', -0.01, -0.27, 0.33, 1.570, -0.05, 0.0)
+        delivery_clearance = ('move', -0.02, -0.27, 0.33, 1.570, -0.05, 0.0)
         
         ingredient_0 = ('move', 0.0, 0.28, 0.3, 1.570, -0.05, 0.0)
         
         grill_0 = ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0)
-        grill_0_flip = ('move', -0.41, 0.0, 0.09, -1.570, -0.05, 0.0)
-        grill_0_clear_flip = ('move', -0.35, 0.1, -0.02, -1.570, -0.05, 0.0)
+        grill_0_flip = ('move', -0.41, 0.0, 0.07, -1.570, -0.05, 0.0)
+        grill_0_clear_flip = ('move', -0.38, 0, -0.02, -1.570, -0.05, 0.0)
+        grill_0_clear_for_travel_up = ('move', -0.33, 0.0, 0.0, -1.570, -0.05, 0.0)
         
         delivery_0 = ('move', 0.0, -0.27, 0.3, 1.570, -0.05, 0.0)
         
@@ -70,6 +71,7 @@ class SequenceCommander(Node):
             grill_0_flip,
             gripper_open,
             grill_0_clear_flip,
+            grill_0_clear_for_travel_up,
             grill_clearance,
             grill_0,
             gripper_close,
