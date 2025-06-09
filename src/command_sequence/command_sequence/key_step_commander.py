@@ -4,8 +4,19 @@ import rclpy
 from rclpy.node import Node
 from roarm_msgs.srv import MoveJointCmd
 from std_msgs.msg import Float32
-import keyboard
-import time
+import sys
+import termios
+import tty
+import threading
+
+def get_key():
+    settings = termios.tcgetattr(sys.stdin)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        key = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+    return key
 
 class SequenceCommander(Node):
     def __init__(self):
@@ -33,9 +44,20 @@ class SequenceCommander(Node):
         self.current_index = 0
         self.get_logger().info('Sequence commander initialized. Press space to execute next command.')
         
-        # Start keyboard listener
-        keyboard.on_press_key('space', self.handle_keypress)
+        # Start keyboard input thread
+        self.running = True
+        self.input_thread = threading.Thread(target=self.input_loop)
+        self.input_thread.start()
         
+    def input_loop(self):
+        while self.running:
+            key = get_key()
+            if key == ' ':  # space key
+                self.handle_keypress()
+            elif key == '\x03':  # ctrl+c
+                self.running = False
+                break
+                
     def send_move_command(self, x, y, z, roll, pitch, yaw):
         request = MoveJointCmd.Request()
         request.x = x
@@ -55,7 +77,7 @@ class SequenceCommander(Node):
         self.gripper_pub.publish(msg)
         self.get_logger().info(f'Sending gripper command: position={position}')
         
-    def handle_keypress(self, event):
+    def handle_keypress(self):
         if self.current_index >= len(self.sequence):
             self.get_logger().info('Sequence completed!')
             return
@@ -79,7 +101,7 @@ def main(args=None):
     try:
         rclpy.spin(commander)
     except KeyboardInterrupt:
-        pass
+        commander.running = False
     finally:
         commander.destroy_node()
         rclpy.shutdown()
