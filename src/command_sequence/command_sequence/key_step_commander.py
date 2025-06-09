@@ -68,6 +68,7 @@ class SequenceCommander(Node):
             grill_clearance,
             grill_0,
             gripper_close,
+            grill_0_clearance,
             grill_0_flip,
             gripper_open,
             grill_0_clear_flip,
