@@ -38,33 +38,46 @@ class SequenceCommander(Node):
         while not self.move_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Move joint service not available, waiting...')
             
+        gripper_open = ('gripper', 1.8)
+        gripper_close = ('gripper', 0.2)
+        
+        ingredient_clearance = ('move', 0.0, 0.28, 0.33, 1.570, -0.05, 0.0)
+        grill_clearance = ('move', -0.2, 0.0, 0.33, 1.570, -0.05, 0.0)
+        delivery_clearance = ('move', 0.0, -0.28, 0.33, 1.570, -0.05, 0.0)
+        
+        ingredient_0 = ('move', 0.0, 0.28, 0.3, 1.570, -0.05, 0.0)
+        
+        grill_0 = ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0)
+        grill_0_flip = ('move', -0.41, 0.0, 0.07, -1.570, -0.05, 0.0)
+        grill_0_clear_flip = ('move', -0.35, 0.0, -0.02, -1.570, -0.05, 0.0),
+        
+        delivery_0 = ('move', 0.0, -0.28, 0.3, 1.570, -0.05, 0.0)
+        
         # Define sequence of commands
         self.sequence = [
             # Format: ('move', x, y, z, roll, pitch, yaw) or ('gripper', position)
-            ('gripper', 1.8),
-            ('move', 0.0, 0.28, 0.33, 1.570, -0.05, 0.0),
-            ('move', 0.0, 0.28, 0.29, 1.570, -0.05, 0.0),
-            ('gripper', 0.2),
-            ('move', 0.0, 0.28, 0.33, 1.570, -0.05, 0.0),
-            ('move', -0.2, 0.0, 0.33, 1.570, -0.05, 0.0),
-            ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0),
-            ('gripper', 1.8),
-            ('move', -0.1, 0.0, 0.38, 1.570, -0.05, 0.0),
-            ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0),
-            ('gripper', 0.2),
-            ('move', -0.41, 0.0, 0.07, -1.570, -0.05, 0.0),
-            ('move', -0.41, 0.0, 0.04, -1.570, -0.05, 0.0),
-            ('gripper', 1.8),
-            ('move', -0.35, 0.0, -0.02, -1.570, -0.05, 0.0),
-            ('move', -0.1, 0.0, 0.38, 1.570, -0.05, 0.0),
-            ('move', -0.41, 0.0, 0.03, 1.570, -0.05, 0.0),
-            ('gripper', 0.2),
-            ('move', -0.1, 0.0, 0.38, 1.570, -0.05, 0.0),
-            ('move', 0.0, -0.28, 0.38, 1.570, -0.05, 0.0),
-            ('move', 0.0, -0.28, 0.33, 1.570, -0.05, 0.0),
-            ('gripper', 1.8),
-            ('move', 0.0, -0.28, 0.38, 1.570, -0.05, 0.0),
-            ('move', 0.0, 0.28, 0.38, 1.570, -0.05, 0.0),
+            gripper_open,
+            ingredient_clearance,
+            ingredient_0,
+            gripper_close,
+            grill_clearance,
+            grill_0,
+            gripper_open,
+            grill_clearance,
+            grill_0,
+            gripper_close,
+            grill_0_flip,
+            gripper_open,
+            grill_0_clear_flip,
+            grill_clearance,
+            grill_0,
+            gripper_close,
+            grill_clearance,
+            delivery_clearance,
+            delivery_0,
+            gripper_open,
+            delivery_clearance,
+            ingredient_clearance,
         ]
         
         self.current_index = 0
