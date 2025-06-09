@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'chicken-sequencer'
+package_name = 'command_sequence'
 
 setup(
     name=package_name,
@@ -14,12 +14,13 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='eric',
-    maintainer_email='eric@todo.todo',
+    maintainer_email='ericmmai@gmail.com',
     description='TODO: Package description',
-    license='Apache-2.0',
+    license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'key_step_commander = command_sequence.key_step_commander:main'
         ],
     },
 )

@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/command_sequence/command_sequence.egg-info
+writing ../../build/command_sequence/command_sequence.egg-info/PKG-INFO
+writing dependency_links to ../../build/command_sequence/command_sequence.egg-info/dependency_links.txt
+writing entry points to ../../build/command_sequence/command_sequence.egg-info/entry_points.txt
+writing requirements to ../../build/command_sequence/command_sequence.egg-info/requires.txt
+writing top-level names to ../../build/command_sequence/command_sequence.egg-info/top_level.txt
+writing manifest file '../../build/command_sequence/command_sequence.egg-info/SOURCES.txt'
+reading manifest file '../../build/command_sequence/command_sequence.egg-info/SOURCES.txt'
+writing manifest file '../../build/command_sequence/command_sequence.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/eric/chicken-sequencer/build/command_sequence/build
+creating /home/eric/chicken-sequencer/build/command_sequence/build/lib
+creating /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence
+copying command_sequence/__init__.py -> /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence
+copying command_sequence/key_step_commander.py -> /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence
+running install
+running install_lib
+creating /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence
+copying /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence/__init__.py -> /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence
+copying /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence/key_step_commander.py -> /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence
+byte-compiling /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence/key_step_commander.py to key_step_commander.cpython-310.pyc
+running install_data
+creating /home/eric/chicken-sequencer/install/command_sequence/share/ament_index
+creating /home/eric/chicken-sequencer/install/command_sequence/share/ament_index/resource_index
+creating /home/eric/chicken-sequencer/install/command_sequence/share/ament_index/resource_index/packages
+copying resource/command_sequence -> /home/eric/chicken-sequencer/install/command_sequence/share/ament_index/resource_index/packages
+copying package.xml -> /home/eric/chicken-sequencer/install/command_sequence/share/command_sequence
+running install_egg_info
+Copying ../../build/command_sequence/command_sequence.egg-info to /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence-0.0.0-py3.10.egg-info
+running install_scripts
+Installing key_step_commander script to /home/eric/chicken-sequencer/install/command_sequence/lib/command_sequence
+writing list of installed files to '/home/eric/chicken-sequencer/build/command_sequence/install.log'

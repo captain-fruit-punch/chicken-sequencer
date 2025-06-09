@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/command_sequence/command_sequence.egg-info/PKG-INFO
+../../build/command_sequence/command_sequence.egg-info/SOURCES.txt
+../../build/command_sequence/command_sequence.egg-info/dependency_links.txt
+../../build/command_sequence/command_sequence.egg-info/entry_points.txt
+../../build/command_sequence/command_sequence.egg-info/requires.txt
+../../build/command_sequence/command_sequence.egg-info/top_level.txt
+../../build/command_sequence/command_sequence.egg-info/zip-safe
+command_sequence/__init__.py
+command_sequence/key_step_commander.py
+resource/command_sequence
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

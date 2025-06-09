@@ -1,0 +1,37 @@
+[0.427s] Invoking command in '/home/eric/chicken-sequencer/src/command_sequence': PYTHONPATH=/home/eric/chicken-sequencer/build/command_sequence/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/command_sequence build --build-base /home/eric/chicken-sequencer/build/command_sequence/build install --record /home/eric/chicken-sequencer/build/command_sequence/install.log --single-version-externally-managed install_data
+[0.592s] running egg_info
+[0.592s] creating ../../build/command_sequence/command_sequence.egg-info
+[0.593s] writing ../../build/command_sequence/command_sequence.egg-info/PKG-INFO
+[0.593s] writing dependency_links to ../../build/command_sequence/command_sequence.egg-info/dependency_links.txt
+[0.593s] writing entry points to ../../build/command_sequence/command_sequence.egg-info/entry_points.txt
+[0.593s] writing requirements to ../../build/command_sequence/command_sequence.egg-info/requires.txt
+[0.593s] writing top-level names to ../../build/command_sequence/command_sequence.egg-info/top_level.txt
+[0.593s] writing manifest file '../../build/command_sequence/command_sequence.egg-info/SOURCES.txt'
+[0.594s] reading manifest file '../../build/command_sequence/command_sequence.egg-info/SOURCES.txt'
+[0.595s] writing manifest file '../../build/command_sequence/command_sequence.egg-info/SOURCES.txt'
+[0.595s] running build
+[0.595s] running build_py
+[0.595s] creating /home/eric/chicken-sequencer/build/command_sequence/build
+[0.595s] creating /home/eric/chicken-sequencer/build/command_sequence/build/lib
+[0.595s] creating /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence
+[0.595s] copying command_sequence/__init__.py -> /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence
+[0.595s] copying command_sequence/key_step_commander.py -> /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence
+[0.595s] running install
+[0.595s] running install_lib
+[0.596s] creating /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence
+[0.596s] copying /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence/__init__.py -> /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence
+[0.596s] copying /home/eric/chicken-sequencer/build/command_sequence/build/lib/command_sequence/key_step_commander.py -> /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence
+[0.596s] byte-compiling /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence/__init__.py to __init__.cpython-310.pyc
+[0.596s] byte-compiling /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence/key_step_commander.py to key_step_commander.cpython-310.pyc
+[0.596s] running install_data
+[0.596s] creating /home/eric/chicken-sequencer/install/command_sequence/share/ament_index
+[0.596s] creating /home/eric/chicken-sequencer/install/command_sequence/share/ament_index/resource_index
+[0.596s] creating /home/eric/chicken-sequencer/install/command_sequence/share/ament_index/resource_index/packages
+[0.597s] copying resource/command_sequence -> /home/eric/chicken-sequencer/install/command_sequence/share/ament_index/resource_index/packages
+[0.597s] copying package.xml -> /home/eric/chicken-sequencer/install/command_sequence/share/command_sequence
+[0.597s] running install_egg_info
+[0.598s] Copying ../../build/command_sequence/command_sequence.egg-info to /home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages/command_sequence-0.0.0-py3.10.egg-info
+[0.598s] running install_scripts
+[0.611s] Installing key_step_commander script to /home/eric/chicken-sequencer/install/command_sequence/lib/command_sequence
+[0.612s] writing list of installed files to '/home/eric/chicken-sequencer/build/command_sequence/install.log'
+[0.625s] Invoked command in '/home/eric/chicken-sequencer/src/command_sequence' returned '0': PYTHONPATH=/home/eric/chicken-sequencer/build/command_sequence/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/eric/chicken-sequencer/install/command_sequence/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/command_sequence build --build-base /home/eric/chicken-sequencer/build/command_sequence/build install --record /home/eric/chicken-sequencer/build/command_sequence/install.log --single-version-externally-managed install_data

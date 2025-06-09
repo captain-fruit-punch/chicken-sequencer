@@ -1,0 +1,3 @@
+[console_scripts]
+key_step_commander = command_sequence.key_step_commander:main
+
