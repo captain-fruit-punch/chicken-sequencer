@@ -1,6 +1,88 @@
-def main():
-    print('Hi from command_sequence.')
+#!/usr/bin/env python3
 
+import rclpy
+from rclpy.node import Node
+from roarm_msgs.srv import MoveJointCmd
+from std_msgs.msg import Float32
+import keyboard
+import time
+
+class SequenceCommander(Node):
+    def __init__(self):
+        super().__init__('sequence_commander')
+        
+        # Create service client for move joint commands
+        self.move_client = self.create_client(MoveJointCmd, '/move_joint_cmd')
+        
+        # Create publisher for gripper commands
+        self.gripper_pub = self.create_publisher(Float32, '/gripper_cmd', 10)
+        
+        # Wait for service to be available
+        while not self.move_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Move joint service not available, waiting...')
+            
+        # Define sequence of commands
+        self.sequence = [
+            # Format: ('move', x, y, z, roll, pitch, yaw) or ('gripper', position)
+            ('move', 0.3, 0.0, 0.1, 0.2, 0.2, 0.0),
+            ('gripper', 0.5),
+            ('move', 0.2, 0.1, 0.15, 0.0, 0.3, 0.1),
+            ('gripper', 0.0),
+        ]
+        
+        self.current_index = 0
+        self.get_logger().info('Sequence commander initialized. Press space to execute next command.')
+        
+        # Start keyboard listener
+        keyboard.on_press_key('space', self.handle_keypress)
+        
+    def send_move_command(self, x, y, z, roll, pitch, yaw):
+        request = MoveJointCmd.Request()
+        request.x = x
+        request.y = y
+        request.z = z
+        request.roll = roll
+        request.pitch = pitch
+        request.yaw = yaw
+        
+        self.get_logger().info(f'Sending move command: x={x}, y={y}, z={z}, roll={roll}, pitch={pitch}, yaw={yaw}')
+        future = self.move_client.call_async(request)
+        return future
+        
+    def send_gripper_command(self, position):
+        msg = Float32()
+        msg.data = position
+        self.gripper_pub.publish(msg)
+        self.get_logger().info(f'Sending gripper command: position={position}')
+        
+    def handle_keypress(self, event):
+        if self.current_index >= len(self.sequence):
+            self.get_logger().info('Sequence completed!')
+            return
+            
+        command = self.sequence[self.current_index]
+        
+        if command[0] == 'move':
+            future = self.send_move_command(*command[1:])
+            # Note: In a real implementation, you might want to wait for the future
+            # to complete before allowing the next command
+        elif command[0] == 'gripper':
+            self.send_gripper_command(command[1])
+            
+        self.current_index += 1
+        self.get_logger().info(f'Command {self.current_index}/{len(self.sequence)} executed. Press space for next command.')
+
+def main(args=None):
+    rclpy.init(args=args)
+    commander = SequenceCommander()
+    
+    try:
+        rclpy.spin(commander)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        commander.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
-    main()
+    main() 
